@@ -1,0 +1,174 @@
+.fortune-cookie {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin: 0 auto;
+}
+
+.fortune-cookie:hover:not(.loading):not(.cracked) {
+  transform: scale(1.05);
+}
+
+.fortune-cookie.loading {
+  cursor: wait;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.fortune-cookie.cracked {
+  cursor: default;
+}
+
+.cookie-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f4a460 0%, #d2691e 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 -20px 40px rgba(0, 0, 0, 0.2),
+    inset 0 20px 40px rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cookie-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(135deg, #f4a460 0%, #daa520 100%);
+  border-radius: 50% 50% 0 0;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cookie-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(135deg, #cd853f 0%, #d2691e 100%);
+  border-radius: 0 0 50% 50%;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.fortune-cookie.cracked .cookie-top {
+  transform: translateY(-30px) rotate(-15deg);
+}
+
+.fortune-cookie.cracked .cookie-bottom {
+  transform: translateY(30px) rotate(15deg);
+}
+
+.crack-line {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  opacity: 0;
+  animation: crack-appear 0.6s ease-out 0.3s forwards;
+}
+
+.crack-1 {
+  width: 3px;
+  height: 120px;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%) rotate(10deg);
+}
+
+.crack-2 {
+  width: 3px;
+  height: 100px;
+  left: 45%;
+  top: 30%;
+  transform: rotate(-15deg);
+}
+
+.crack-3 {
+  width: 3px;
+  height: 80px;
+  left: 55%;
+  top: 35%;
+  transform: rotate(20deg);
+}
+
+@keyframes crack-appear {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.cookie-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glow 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .fortune-cookie {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+
+

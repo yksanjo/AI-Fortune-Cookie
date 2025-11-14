@@ -1,0 +1,147 @@
+.style-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.style-label {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.style-dropdown {
+  position: relative;
+}
+
+.style-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 8px 16px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  justify-content: space-between;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.style-button:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.style-button.open {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.style-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.style-emoji {
+  font-size: 1.1rem;
+}
+
+.style-name {
+  flex: 1;
+  text-align: left;
+}
+
+.style-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.style-button.open .style-arrow {
+  transform: rotate(180deg);
+}
+
+.style-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 8px;
+  animation: menu-appear 0.2s ease-out;
+}
+
+@keyframes menu-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.style-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.style-option:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.style-option.selected {
+  background: rgba(102, 126, 234, 0.2);
+  font-weight: 600;
+}
+
+.style-option .style-emoji {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .style-selector {
+    gap: 10px;
+  }
+  
+  .style-button {
+    min-width: 130px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .style-menu {
+    min-width: 180px;
+  }
+}
+
