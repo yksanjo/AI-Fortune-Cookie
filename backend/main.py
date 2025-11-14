@@ -106,10 +106,21 @@ async def get_fortune(request: FortuneRequest = FortuneRequest()):
             provider = hf_provider
             provider_name = "huggingface"
     
+    # If no provider available, use fallback fortunes
     if not provider:
-        raise HTTPException(
-            status_code=503,
-            detail="No AI provider is available. Please set up Ollama or Hugging Face API key."
+        from backend.core.fortune_generator import FortuneGenerator
+        # Create a dummy provider for fallback
+        class FallbackProvider:
+            async def chat(self, messages, temperature=0.9):
+                # Return empty to trigger fallback
+                raise Exception("No AI provider")
+        
+        generator = FortuneGenerator(FallbackProvider())
+        result = await generator.generate_fortune(style=request.style)
+        return FortuneResponse(
+            fortune=result["fortune"],
+            style=result["style"],
+            provider="fallback"
         )
     
     # Create fortune generator with selected provider

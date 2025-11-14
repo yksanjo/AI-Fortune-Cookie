@@ -1,0 +1,31 @@
+services:
+  # Backend API
+  - type: web
+    name: ai-fortune-cookie-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: python backend/run.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.11
+      - key: HUGGINGFACE_API_KEY
+        sync: false  # Set this in Render dashboard
+      - key: DEFAULT_PROVIDER
+        value: ollama
+    healthCheckPath: /health
+
+  # Frontend
+  - type: web
+    name: ai-fortune-cookie-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: ai-fortune-cookie-backend
+          property: host
+
