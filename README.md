@@ -1,5 +1,9 @@
 # AI Fortune Cookie 🥠
 
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/) [![GitHub stars](https://img.shields.io/github/stars/yksanjo/AI-Fortune-Cookie?style=social)](https://github.com/yksanjo/AI-Fortune-Cookie/stargazers) [![GitHub forks](https://img.shields.io/github/forks/yksanjo/AI-Fortune-Cookie.svg)](https://github.com/yksanjo/AI-Fortune-Cookie/network/members) [![GitHub issues](https://img.shields.io/github/issues/yksanjo/AI-Fortune-Cookie.svg)](https://github.com/yksanjo/AI-Fortune-Cookie/issues)
+[![Last commit](https://img.shields.io/github/last-commit/yksanjo/AI-Fortune-Cookie.svg)](https://github.com/yksanjo/AI-Fortune-Cookie/commits/main)
+
+
 A delightful, interactive web app that generates AI-powered fortunes in the style of traditional fortune cookies. Crack open a virtual fortune cookie and receive personalized, creative fortunes powered by generative AI!
 
 ## Features
